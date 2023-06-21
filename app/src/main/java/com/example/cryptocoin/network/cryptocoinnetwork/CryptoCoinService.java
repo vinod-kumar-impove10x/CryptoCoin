@@ -1,4 +1,4 @@
-package com.example.cryptocoin.network;
+package com.example.cryptocoin.network.cryptocoinnetwork;
 
 import com.example.cryptocoin.model.CryptoCoin;
 

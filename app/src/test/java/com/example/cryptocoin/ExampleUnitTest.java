@@ -4,9 +4,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
+import com.example.cryptocoin.model.coindetails.CoinDetails;
 import com.example.cryptocoin.model.CryptoCoin;
-import com.example.cryptocoin.network.CryptoCoinApi;
-import com.example.cryptocoin.network.CryptoCoinService;
+import com.example.cryptocoin.network.coindetailsnetwork.CoinDetailsApi;
+import com.example.cryptocoin.network.coindetailsnetwork.CoinDetailsService;
+import com.example.cryptocoin.network.cryptocoinnetwork.CryptoCoinApi;
+import com.example.cryptocoin.network.cryptocoinnetwork.CryptoCoinService;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -27,7 +30,7 @@ public class ExampleUnitTest {
 
 
     @Test
-    public void getPeopleGenerateUsers() throws IOException {
+    public void getCryptoCoins() throws IOException {
         CryptoCoinApi cryptoCoinApi = new CryptoCoinApi();
         CryptoCoinService cryptoCoinService = cryptoCoinApi.createCryptoCoinService();
         Call<List<CryptoCoin>> call = cryptoCoinService.fetchCryptoCoins();
@@ -35,5 +38,15 @@ public class ExampleUnitTest {
         assertNotNull(cryptoCoinList);
         assertFalse(cryptoCoinList.isEmpty());
         System.out.println(new Gson().toJson(cryptoCoinList));
+    }
+
+    @Test
+    public void getCoinDetails() throws IOException {
+        CoinDetailsApi coinDetailsApi = new CoinDetailsApi();
+        CoinDetailsService coinDetailsService = coinDetailsApi.createCoinDetailsService();
+        Call<CoinDetails> call = coinDetailsService.fetchCoinDetails();
+        CoinDetails coinDetailsList = call.execute().body();
+        assertNotNull(coinDetailsList);
+        System.out.println(new Gson().toJson(coinDetailsList));
     }
 }
