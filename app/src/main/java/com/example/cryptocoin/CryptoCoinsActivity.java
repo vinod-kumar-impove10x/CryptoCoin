@@ -32,7 +32,7 @@ public class CryptoCoinsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityCryptoCoinsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        getSupportActionBar().setTitle("Cryptos");
+        getSupportActionBar().setTitle("CryptoCoins");
         getCryptoCoins();
         setupAdapter();
         setupRecyclerView();
