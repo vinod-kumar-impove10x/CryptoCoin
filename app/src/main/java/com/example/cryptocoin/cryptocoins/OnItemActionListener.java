@@ -1,4 +1,4 @@
-package com.example.cryptocoin.network;
+package com.example.cryptocoin.cryptocoins;
 
 public interface OnItemActionListener {
 

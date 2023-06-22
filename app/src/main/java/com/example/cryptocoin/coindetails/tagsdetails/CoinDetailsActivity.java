@@ -1,4 +1,4 @@
-package com.example.cryptocoin;
+package com.example.cryptocoin.coindetails.tagsdetails;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -6,17 +6,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 
+import com.example.cryptocoin.TeamMembersAdapter;
+import com.example.cryptocoin.coindetails.CoinDetailsAdapter;
 import com.example.cryptocoin.databinding.ActivityCoinDetailsBinding;
-import com.example.cryptocoin.databinding.ActivityCryptoCoinsBinding;
-import com.example.cryptocoin.model.CryptoCoin;
 import com.example.cryptocoin.model.coindetails.CoinDetails;
 import com.example.cryptocoin.model.coindetails.Tags;
+import com.example.cryptocoin.model.coindetails.Team;
 import com.example.cryptocoin.network.coindetailsnetwork.CoinDetailsApi;
 import com.example.cryptocoin.network.coindetailsnetwork.CoinDetailsService;
-import com.example.cryptocoin.network.cryptocoinnetwork.CryptoCoinApi;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -28,8 +27,10 @@ public class CoinDetailsActivity extends AppCompatActivity {
      private String id;
 
     private CoinDetailsAdapter coinDetailsAdapter;
+    private TeamMembersAdapter teamMembersAdapter;
 
     private ArrayList<Tags> tags = new ArrayList<>();
+    private ArrayList<Team> teams = new ArrayList<>();
 
     private CoinDetailsApi coinDetailsApi;
 
@@ -57,6 +58,7 @@ public class CoinDetailsActivity extends AppCompatActivity {
                CoinDetails coinDetails = response.body();
                binding.setCoinDetails(coinDetails);
                coinDetailsAdapter.setTagDetails(coinDetails.getTags());
+               teamMembersAdapter.setTeamDetails(coinDetails.getTeam());
             }
 
             @Override
@@ -69,10 +71,14 @@ public class CoinDetailsActivity extends AppCompatActivity {
     private void setupAdapter() {
         coinDetailsAdapter = new CoinDetailsAdapter();
         coinDetailsAdapter.setTagDetails(tags);
+        teamMembersAdapter = new TeamMembersAdapter();
+        teamMembersAdapter.setTeamDetails(teams);
     }
 
     private void setupRecyclerView() {
         binding.detailTagsRv.setLayoutManager(new GridLayoutManager(this,3));
         binding.detailTagsRv.setAdapter(coinDetailsAdapter);
+        binding.teamMemberRv.setLayoutManager(new LinearLayoutManager(this));
+        binding.teamMemberRv.setAdapter(teamMembersAdapter);
     }
 }

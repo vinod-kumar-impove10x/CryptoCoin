@@ -1,4 +1,4 @@
-package com.example.cryptocoin;
+package com.example.cryptocoin.cryptocoins;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cryptocoin.databinding.CryptoCoinItemBinding;
 import com.example.cryptocoin.model.CryptoCoin;
-import com.example.cryptocoin.network.OnItemActionListener;
 
 import java.util.List;
 

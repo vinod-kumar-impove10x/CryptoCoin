@@ -1,4 +1,4 @@
-package com.example.cryptocoin;
+package com.example.cryptocoin.cryptocoins;
 
 import android.view.View;
 

@@ -1,4 +1,4 @@
-package com.example.cryptocoin;
+package com.example.cryptocoin.cryptocoins;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.cryptocoin.coindetails.tagsdetails.CoinDetailsActivity;
 import com.example.cryptocoin.databinding.ActivityCryptoCoinsBinding;
 import com.example.cryptocoin.model.CryptoCoin;
-import com.example.cryptocoin.network.OnItemActionListener;
 import com.example.cryptocoin.network.cryptocoinnetwork.CryptoCoinApi;
 import com.example.cryptocoin.network.cryptocoinnetwork.CryptoCoinService;
 
