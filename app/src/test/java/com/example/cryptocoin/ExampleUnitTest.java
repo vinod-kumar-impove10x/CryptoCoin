@@ -44,7 +44,7 @@ public class ExampleUnitTest {
     public void getCoinDetails() throws IOException {
         CoinDetailsApi coinDetailsApi = new CoinDetailsApi();
         CoinDetailsService coinDetailsService = coinDetailsApi.createCoinDetailsService();
-        Call<CoinDetails> call = coinDetailsService.fetchCoinDetails();
+        Call<CoinDetails> call = coinDetailsService.fetchCoinDetails("btc-bitcoin");
         CoinDetails coinDetailsList = call.execute().body();
         assertNotNull(coinDetailsList);
         System.out.println(new Gson().toJson(coinDetailsList));

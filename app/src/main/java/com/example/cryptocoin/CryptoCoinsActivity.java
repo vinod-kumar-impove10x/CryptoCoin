@@ -3,10 +3,12 @@ package com.example.cryptocoin;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.cryptocoin.databinding.ActivityCryptoCoinsBinding;
 import com.example.cryptocoin.model.CryptoCoin;
+import com.example.cryptocoin.network.OnItemActionListener;
 import com.example.cryptocoin.network.cryptocoinnetwork.CryptoCoinApi;
 import com.example.cryptocoin.network.cryptocoinnetwork.CryptoCoinService;
 
@@ -21,7 +23,7 @@ public class CryptoCoinsActivity extends AppCompatActivity {
 
     private ActivityCryptoCoinsBinding binding;
 
-    private ArrayList<CryptoCoin> cryptoCoins = new ArrayList<>();
+    private List<CryptoCoin> cryptoCoins = new ArrayList<>();
 
     private CryptoCoinAdapter cryptoCoinAdapter;
 
@@ -64,5 +66,17 @@ public class CryptoCoinsActivity extends AppCompatActivity {
     private void setupAdapter() {
         cryptoCoinAdapter = new CryptoCoinAdapter();
         cryptoCoinAdapter.setCryptoCoins(cryptoCoins);
+        cryptoCoinAdapter.setOnItemActionListener(new OnItemActionListener() {
+            @Override
+            public void OnClick(String id) {
+                handleIntent(id);
+            }
+        });
+    }
+
+    private void handleIntent(String id) {
+        Intent intent = new Intent(this, CoinDetailsActivity.class);
+        intent.putExtra("id", id);
+        startActivity(intent);
     }
 }
